@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
 
 let notes = [
@@ -24,12 +23,6 @@ const generateId = () => {
   const maxId = notes.reduce((acc, val) => Math.max(acc, Number(val.id)), 0);
   return String(maxId + 1);
 };
-
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
 
 // parse application/json
 app.use(express.json());
