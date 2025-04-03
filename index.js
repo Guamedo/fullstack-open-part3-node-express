@@ -2,12 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
-
 let notes = [
   {
     id: "1",
@@ -31,12 +25,16 @@ const generateId = () => {
   return String(maxId + 1);
 };
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
+
 // parse application/json
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World</h1>");
-});
+app.use(express.static("dist"));
 
 app.get("/api/notes", (req, res) => {
   res.json(notes);
