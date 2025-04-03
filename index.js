@@ -74,7 +74,7 @@ app.put("/api/notes/:id", async (req, res, next) => {
       next(err);
     }
   } else {
-    res.status(400).send(`Invalid note`);
+    res.status(400).send("Invalid note");
   }
 });
 
